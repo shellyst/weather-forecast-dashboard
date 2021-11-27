@@ -89,18 +89,25 @@ function getFiveDay(lat, lon) {
         // data.daily[i]. for every piece of info you need
         var dailyTemp = document.createElement("p");
         dailyTemp.setAttribute("class", "daily-temp");
-        dailyTemp.textContent = data.daily[i].temp.day;
+        dailyTemp.textContent = "Temp: " + data.daily[i].temp.day + "°C";
         fiveDayCard.appendChild(dailyTemp);
 
         var dailyWind = document.createElement("p");
         dailyWind.setAttribute("class", "daily-wind");
-        dailyWind.textContent = data.daily[i].wind_speed;
+        dailyWind.textContent = "Wind: " + data.daily[i].wind_speed + " MPH";
         fiveDayCard.appendChild(dailyWind);
 
         var dailyHumidity = document.createElement("p");
         dailyHumidity.setAttribute("class", "daily-humid");
-        dailyHumidity.textContent = data.daily[i].humidity;
+        dailyHumidity.textContent =
+          "Humidity: " + data.daily[i].humidity + " %";
         fiveDayCard.appendChild(dailyHumidity);
       }
     });
 }
+
+//TO DO
+//Local Storage - save to buttons on page to show recent cities
+//Complete styling on forecast cards
+//UV Index
+//Figure out icons
