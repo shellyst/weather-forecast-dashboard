@@ -69,3 +69,11 @@ main {
 .favorable {
   background-color: green;
 }
+
+.moderate {
+  background-color: orange;
+}
+
+.severe {
+  background-color: red;
+}

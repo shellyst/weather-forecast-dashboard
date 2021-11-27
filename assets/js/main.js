@@ -5,6 +5,7 @@ var temperatureEl = document.querySelector("#temperature");
 var windEl = document.querySelector("#wind");
 var humidityEl = document.querySelector("#humidity");
 var uvEl = document.querySelector("#uv");
+var iconEl = document.querySelector("#current-icon");
 var searchBtnEl = document.querySelector("#search-btn");
 var searched = document.querySelector("#search-city");
 var fiveDayContainer = document.querySelector("#forecast-section");
@@ -38,6 +39,7 @@ function getCurrentWeather(city) {
       getFiveDay(latitude, longitude);
 
       currentCityEl.textContent = data.name;
+
       temperatureEl.textContent = "Temp: " + data.main.temp + "°C";
       windEl.textContent = "Wind: " + data.wind.speed + " MPH";
       humidityEl.textContent = "Humidity: " + data.main.humidity + " %";
@@ -64,8 +66,13 @@ function getFiveDay(lat, lon) {
       uvEl.textContent = data.current.uvi;
       if (data.current.uvi < 3) {
         uvEl.setAttribute("class", "favorable");
+      } else {
+        if (data.current.uvi > 3 && data.current.uvi < 7) {
+          uvEl.setAttribute("class", "moderate");
+        } else {
+          uvEl.setAttribute("class", "severe");
+        }
       }
-      // rest of your if checks for uv color
 
       //For loop to cycle through each of the 5 days, attached each element to a card, and set each piece of information needed for the forecast.
       for (var i = 0; i < 5; i++) {
