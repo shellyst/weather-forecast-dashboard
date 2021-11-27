@@ -68,3 +68,7 @@ main {
 .justify-space-between {
   justify-content: space-between;
 }
+
+.favorable {
+    background-color: green;
+}

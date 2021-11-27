@@ -16,6 +16,10 @@
       href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <script
+      src="https://kit.fontawesome.com/4b40499aeb.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="./assets/css/styles.css" />
     <title>Weather Dashboard</title>
   </head>
@@ -32,26 +36,28 @@
           type="text"
           autofocus="true"
           class="form-control"
-          placeholder="Toronto"
+          placeholder="Enter a City"
         />
         <button type="submit" class="btn" id="search-btn">Search</button>
       </div>
 
       <div class="col-12 col-md-8">
         <div class="border border-dark">
-          <h2 class="city-date">Toronto (11/26/2021)</h2>
+          <h2 id="current-city">
+          </h2>
           <img id="current-icon" />
-          <p id="temperature">Temp: 5C</p>
-          <p id="wind">Wind: 6.67 MPH</p>
-          <p id="humidity">Humidity: 46%</p>
-          <p id="uv">UV Index: 0.47</p>
+          <p id="temperature"></p>
+          <p id="wind"></p>
+          <p id="humidity"></p>
+          <p id="uv"></p>
         </div>
         <div id="forecast-section" class="weather-forecast">
           <h3 class="five-day">5-Day Forecast</h3>
-          <div class="weather-forecast" id="forecast"></div>
+          
         </div>
       </div>
     </main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="./assets/js/main.js"></script>
   </body>
 </html>
