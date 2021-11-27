@@ -67,13 +67,32 @@ main {
 }
 
 .favorable {
-  background-color: green;
+  background-color: #157e51;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
 }
 
 .moderate {
   background-color: orange;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
 }
 
 .severe {
   background-color: red;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#uv {
+  width: 3%;
+}
+
+.card {
+  background-color: #33475a;
+  color: white;
+  width: 20%;
 }

@@ -8,7 +8,7 @@ var uvEl = document.querySelector("#uv");
 var iconEl = document.querySelector("#current-icon");
 var searchBtnEl = document.querySelector("#search-btn");
 var searched = document.querySelector("#search-city");
-var fiveDayContainer = document.querySelector("#forecast-section");
+var fiveDayContainer = document.querySelector("#row");
 var API_KEY = "9ee8642695c7bb9e77c98b6a3388381c";
 
 //Event Listener
