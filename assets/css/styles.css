@@ -31,12 +31,9 @@ main {
 }
 
 /*Form*/
-.form-input {
-  display: block;
-}
 
-.form-input {
-  width: 50%;
+.form-control {
+  width: 80%;
   padding-left: 3%;
   margin: 5px 0;
   font-size: 20px;
@@ -47,7 +44,7 @@ main {
   color: white;
   font-size: 20px;
   padding: 6px 5px;
-  width: 100%;
+  width: 80%;
   display: block;
   margin: 20px 0;
 }
@@ -70,5 +67,5 @@ main {
 }
 
 .favorable {
-    background-color: green;
+  background-color: green;
 }
