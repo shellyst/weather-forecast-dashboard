@@ -96,3 +96,8 @@ main {
   color: white;
   width: 20%;
 }
+
+#search-history {
+  display: flex;
+  flex-direction: column;
+}

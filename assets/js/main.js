@@ -10,6 +10,7 @@ var searchBtnEl = document.querySelector("#search-btn");
 var searched = document.querySelector("#search-city");
 var fiveDayContainer = document.querySelector("#row");
 var API_KEY = "9ee8642695c7bb9e77c98b6a3388381c";
+var searchHistory = document.getElementById('search-history')
 
 //Event Listener
 searchBtnEl.addEventListener("click", getCity);
@@ -18,6 +19,7 @@ searchBtnEl.addEventListener("click", getCity);
 function getCity() {
   var currentCity = searched.value;
   getCurrentWeather(currentCity);
+  saveHistory(currentCity)
 }
 
 function getCurrentWeather(city) {
@@ -62,6 +64,7 @@ function getFiveDay(lat, lon) {
     })
     .then(function (data) {
       console.log("5day", data);
+      fiveDayContainer.textContent =''
 
       uvEl.textContent = data.current.uvi;
       if (data.current.uvi < 3) {
@@ -111,3 +114,34 @@ function getFiveDay(lat, lon) {
 //Complete styling on forecast cards
 //UV Index
 //Figure out icons
+//Moment.js to figure out date display
+function saveHistory(city) {
+  var storage = JSON.parse(localStorage.getItem('weatherHistory'))
+  if (storage === null) {
+    storage = []
+  }
+  storage.push(city)
+  localStorage.setItem('weatherHistory', JSON.stringify(storage))
+  getHistory()
+}
+
+function getHistory() {
+  var storage = JSON.parse(localStorage.getItem('weatherHistory'))
+  if (storage === null) {
+   searchHistory.textContent = 'No History'
+  } else {
+    searchHistory.textContent = ''
+    for (var i = 0; i < storage.length; i++) {
+      var historyBtn = document.createElement('button')
+      historyBtn.setAttribute('id', storage[i])
+      historyBtn.textContent = storage[i]
+      searchHistory.appendChild(historyBtn)
+
+      historyBtn.addEventListener('click', function(e) {
+        getCurrentWeather(e.target.id)
+      })
+    }
+  }
+}
+
+getHistory()
