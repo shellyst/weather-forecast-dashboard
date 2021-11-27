@@ -101,3 +101,11 @@ main {
   display: flex;
   flex-direction: column;
 }
+
+.storage-button {
+  width: 90%;
+  background-color: #b7b7b7;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 5px;
+}

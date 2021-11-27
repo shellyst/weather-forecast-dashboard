@@ -10,7 +10,7 @@ var searchBtnEl = document.querySelector("#search-btn");
 var searched = document.querySelector("#search-city");
 var fiveDayContainer = document.querySelector("#row");
 var API_KEY = "9ee8642695c7bb9e77c98b6a3388381c";
-var searchHistory = document.getElementById('search-history')
+var searchHistory = document.getElementById("search-history");
 
 //Event Listener
 searchBtnEl.addEventListener("click", getCity);
@@ -19,7 +19,7 @@ searchBtnEl.addEventListener("click", getCity);
 function getCity() {
   var currentCity = searched.value;
   getCurrentWeather(currentCity);
-  saveHistory(currentCity)
+  saveHistory(currentCity);
 }
 
 function getCurrentWeather(city) {
@@ -64,7 +64,7 @@ function getFiveDay(lat, lon) {
     })
     .then(function (data) {
       console.log("5day", data);
-      fiveDayContainer.textContent =''
+      fiveDayContainer.textContent = "";
 
       uvEl.textContent = data.current.uvi;
       if (data.current.uvi < 3) {
@@ -110,38 +110,41 @@ function getFiveDay(lat, lon) {
 }
 
 //TO DO
-//Local Storage - save to buttons on page to show recent cities
 //Complete styling on forecast cards
 //UV Index
 //Figure out icons
 //Moment.js to figure out date display
+
+//Stores searched cities to localStorage. Turns the storage into an array, so that multiple previously searched cities will be saved to the page.
 function saveHistory(city) {
-  var storage = JSON.parse(localStorage.getItem('weatherHistory'))
+  var storage = JSON.parse(localStorage.getItem("weatherHistory"));
   if (storage === null) {
-    storage = []
+    storage = [];
   }
-  storage.push(city)
-  localStorage.setItem('weatherHistory', JSON.stringify(storage))
-  getHistory()
+  storage.push(city);
+  localStorage.setItem("weatherHistory", JSON.stringify(storage));
+  getHistory();
 }
 
+//Once search history is stored as array, we retrieve the information and run it through function to display on the page as a button. A for loop is used since we have the stored data saved as an array, and it cycles through each item stored to individually style.
 function getHistory() {
-  var storage = JSON.parse(localStorage.getItem('weatherHistory'))
+  var storage = JSON.parse(localStorage.getItem("weatherHistory"));
   if (storage === null) {
-   searchHistory.textContent = 'No History'
+    searchHistory.textContent = "No History";
   } else {
-    searchHistory.textContent = ''
+    searchHistory.textContent = "";
     for (var i = 0; i < storage.length; i++) {
-      var historyBtn = document.createElement('button')
-      historyBtn.setAttribute('id', storage[i])
-      historyBtn.textContent = storage[i]
-      searchHistory.appendChild(historyBtn)
+      var historyBtn = document.createElement("button");
+      historyBtn.setAttribute("id", storage[i]);
+      historyBtn.setAttribute("class", "storage-button");
+      historyBtn.textContent = storage[i];
+      searchHistory.appendChild(historyBtn);
 
-      historyBtn.addEventListener('click', function(e) {
-        getCurrentWeather(e.target.id)
-      })
+      historyBtn.addEventListener("click", function (event) {
+        getCurrentWeather(event.target.id);
+      });
     }
   }
 }
 
-getHistory()
+getHistory();
