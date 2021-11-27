@@ -10,8 +10,10 @@ var searched = document.querySelector("#search-city");
 var fiveDayContainer = document.querySelector("#forecast-section");
 var API_KEY = "9ee8642695c7bb9e77c98b6a3388381c";
 
+//Event Listener
 searchBtnEl.addEventListener("click", getCity);
 
+//Main function to retrieve value of input from user, and pass that value into the getCurrentWeather function.
 function getCity() {
   var currentCity = searched.value;
   getCurrentWeather(currentCity);
@@ -42,6 +44,7 @@ function getCurrentWeather(city) {
     });
 }
 
+//Function to call api and retrieve data for a five-day forecast.
 function getFiveDay(lat, lon) {
   fetch(
     "https://api.openweathermap.org/data/2.5/onecall?lat=" +
@@ -49,7 +52,8 @@ function getFiveDay(lat, lon) {
       "&lon=" +
       lon +
       "&appid=" +
-      API_KEY
+      API_KEY +
+      "&units=metric"
   )
     .then(function (response) {
       return response.json();
@@ -63,6 +67,7 @@ function getFiveDay(lat, lon) {
       }
       // rest of your if checks for uv color
 
+      //For loop to cycle through each of the 5 days, attached each element to a card, and set each piece of information needed for the forecast.
       for (var i = 0; i < 5; i++) {
         var fiveDayCard = document.createElement("div");
         fiveDayCard.setAttribute("class", "card");
@@ -75,6 +80,20 @@ function getFiveDay(lat, lon) {
         fiveDayCard.prepend(date);
 
         // data.daily[i]. for every piece of info you need
+        var dailyTemp = document.createElement("p");
+        dailyTemp.setAttribute("class", "daily-temp");
+        dailyTemp.textContent = data.daily[i].temp.day;
+        fiveDayCard.appendChild(dailyTemp);
+
+        var dailyWind = document.createElement("p");
+        dailyWind.setAttribute("class", "daily-wind");
+        dailyWind.textContent = data.daily[i].wind_speed;
+        fiveDayCard.appendChild(dailyWind);
+
+        var dailyHumidity = document.createElement("p");
+        dailyHumidity.setAttribute("class", "daily-humid");
+        dailyHumidity.textContent = data.daily[i].humidity;
+        fiveDayCard.appendChild(dailyHumidity);
       }
     });
 }

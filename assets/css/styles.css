@@ -33,7 +33,7 @@ main {
 /*Form*/
 
 .form-control {
-  width: 80%;
+  width: 90%;
   padding-left: 3%;
   margin: 5px 0;
   font-size: 20px;
@@ -44,7 +44,7 @@ main {
   color: white;
   font-size: 20px;
   padding: 6px 5px;
-  width: 80%;
+  width: 90%;
   display: block;
   margin: 20px 0;
 }
