@@ -37,8 +37,8 @@ function getCurrentWeather(city) {
 
       currentCityEl.textContent = data.name;
       temperatureEl.textContent = "Temp: " + data.main.temp + "°C";
-      windEl.textContent = data.wind.speed;
-      humidityEl.textContent = data.main.humidity;
+      windEl.textContent = "Wind: " + data.wind.speed + " MPH";
+      humidityEl.textContent = "Humidity: " + data.main.humidity + " %";
     });
 }
 
