@@ -53,6 +53,10 @@ main {
   margin-top: 10px;
 }
 
+h2 {
+  font-weight: bold;
+}
+
 .five-day {
   font-weight: bold;
 }

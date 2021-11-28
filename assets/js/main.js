@@ -87,9 +87,14 @@ function getFiveDay(lat, lon) {
         fiveDayContainer.append(fiveDayCard);
 
         var date = document.createElement("h3");
-        date.textContent = moment()
-          .add(i + 1, "days")
-          .format("dddd");
+        date.setAttribute("class", "forecast-date");
+        date.textContent =
+          moment()
+            .add(i + 1, "days")
+            .format("dddd") +
+          "(" +
+          moment().format("L") +
+          ")";
         fiveDayCard.prepend(date);
 
         // data.daily[i]. for every piece of info you need
