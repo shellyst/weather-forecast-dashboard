@@ -5,6 +5,7 @@ var temperatureEl = document.querySelector("#temperature");
 var windEl = document.querySelector("#wind");
 var humidityEl = document.querySelector("#humidity");
 var uvEl = document.querySelector("#uv");
+var uvInfoEl = document.querySelector("#uv-info");
 var iconEl = document.querySelector("#current-icon");
 var searchBtnEl = document.querySelector("#search-btn");
 var searched = document.querySelector("#search-city");
@@ -45,6 +46,7 @@ function getCurrentWeather(city) {
       temperatureEl.textContent = "Temp: " + data.main.temp + "°C";
       windEl.textContent = "Wind: " + data.wind.speed + " MPH";
       humidityEl.textContent = "Humidity: " + data.main.humidity + " %";
+      uvInfoEl.textContent = "UV Index: ";
     });
 }
 
@@ -67,6 +69,7 @@ function getFiveDay(lat, lon) {
       fiveDayContainer.textContent = "";
 
       uvEl.textContent = data.current.uvi;
+      uvInfoEl.appendChild(uvEl);
       if (data.current.uvi < 3) {
         uvEl.setAttribute("class", "favorable");
       } else {

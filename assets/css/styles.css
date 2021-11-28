@@ -71,6 +71,7 @@ main {
   color: white;
   border-radius: 5px;
   text-align: center;
+  padding: 5px 15px;
 }
 
 .moderate {
@@ -78,6 +79,7 @@ main {
   border-radius: 5px;
   color: white;
   text-align: center;
+  padding: 5px 15px;
 }
 
 .severe {
@@ -85,6 +87,7 @@ main {
   color: white;
   border-radius: 5px;
   text-align: center;
+  padding: 5px 15px;
 }
 
 #uv {
@@ -108,4 +111,5 @@ main {
   border: none;
   border-radius: 5px;
   padding: 6px 5px;
+  margin: 7px 0;
 }
