@@ -41,8 +41,8 @@ function getCurrentWeather(city) {
       var longitude = data.coord.lon;
       getFiveDay(latitude, longitude);
 
-      currentCityEl.textContent = data.name;
-
+      currentCityEl.textContent =
+        data.name + " " + "(" + moment().format("L") + ")";
       temperatureEl.textContent = "Temp: " + data.main.temp + "°C";
       windEl.textContent = "Wind: " + data.wind.speed + " MPH";
       humidityEl.textContent = "Humidity: " + data.main.humidity + " %";
