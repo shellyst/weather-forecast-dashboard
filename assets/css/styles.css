@@ -105,6 +105,10 @@ h2 {
   margin-left: 10px;
 }
 
+#dailyIcon {
+  width: 30%;
+}
+
 #search-history {
   display: flex;
   flex-direction: column;

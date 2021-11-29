@@ -99,6 +99,16 @@ function getFiveDay(lat, lon) {
         fiveDayCard.prepend(date);
 
         // data.daily[i]. for every piece of info you need
+        var dailyIcon = document.createElement("img");
+        dailyIcon.setAttribute(
+          "src",
+          "http://openweathermap.org/img/wn/" +
+            data.daily[i].weather[0].icon +
+            ".png"
+        );
+        dailyIcon.setAttribute("id", "dailyIcon");
+        fiveDayCard.appendChild(dailyIcon);
+
         var dailyTemp = document.createElement("p");
         dailyTemp.setAttribute("class", "daily-temp");
         dailyTemp.textContent = "Temp: " + data.daily[i].temp.day + "°C";
