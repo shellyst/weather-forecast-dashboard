@@ -1,4 +1,4 @@
-//Global Variables//
+//Global Variables
 var currentCityEl = document.querySelector("#current-city");
 var iconEl = document.querySelector("#icon");
 var currentIconEl = document.querySelector("#current-icon");
@@ -17,12 +17,14 @@ var searchHistory = document.getElementById("search-history");
 searchBtnEl.addEventListener("click", getCity);
 
 //Main function to retrieve value of input from user, and pass that value into the getCurrentWeather function.
+//Function defines currentCity using whatever value is input by the user, and passes this information through the getCurrentWeatherFunction
 function getCity() {
   var currentCity = searched.value;
   getCurrentWeather(currentCity);
   saveHistory(currentCity);
 }
 
+//Function receives date from getCity, and passes it through api to get current weather data. The data is received as objects from json, and is console logged so that each piece of required information can be displayed on the page.
 function getCurrentWeather(city) {
   fetch(
     "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -98,7 +100,6 @@ function getFiveDay(lat, lon) {
           .format("dddd");
         fiveDayCard.prepend(date);
 
-        // data.daily[i]. for every piece of info you need
         var dailyIcon = document.createElement("img");
         dailyIcon.setAttribute(
           "src",
@@ -127,12 +128,6 @@ function getFiveDay(lat, lon) {
       }
     });
 }
-
-//TO DO
-//Complete styling on forecast cards
-//UV Index
-//Figure out icons
-//Moment.js to figure out date display
 
 //Stores searched cities to localStorage. Turns the storage into an array, so that multiple previously searched cities will be saved to the page.
 function saveHistory(city) {
