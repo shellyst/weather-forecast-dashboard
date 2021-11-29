@@ -1,12 +1,12 @@
 //Global Variables//
 var currentCityEl = document.querySelector("#current-city");
+var iconEl = document.querySelector("#icon");
 var currentIconEl = document.querySelector("#current-icon");
 var temperatureEl = document.querySelector("#temperature");
 var windEl = document.querySelector("#wind");
 var humidityEl = document.querySelector("#humidity");
 var uvEl = document.querySelector("#uv");
 var uvInfoEl = document.querySelector("#uv-info");
-var iconEl = document.querySelector("#current-icon");
 var searchBtnEl = document.querySelector("#search-btn");
 var searched = document.querySelector("#search-city");
 var fiveDayContainer = document.querySelector("#row");
@@ -43,6 +43,11 @@ function getCurrentWeather(city) {
 
       currentCityEl.textContent =
         data.name + " " + "(" + moment().format("L") + ")";
+
+      iconEl.setAttribute(
+        "src",
+        "http://openweathermap.org/img/wn/" + data.weather[0].icon + ".png"
+      );
       temperatureEl.textContent = "Temp: " + data.main.temp + "°C";
       windEl.textContent = "Wind: " + data.wind.speed + " MPH";
       humidityEl.textContent = "Humidity: " + data.main.humidity + " %";
@@ -88,13 +93,9 @@ function getFiveDay(lat, lon) {
 
         var date = document.createElement("h3");
         date.setAttribute("class", "forecast-date");
-        date.textContent =
-          moment()
-            .add(i + 1, "days")
-            .format("dddd") +
-          "(" +
-          moment().format("L") +
-          ")";
+        date.textContent = moment()
+          .add(i + 1, "days")
+          .format("dddd");
         fiveDayCard.prepend(date);
 
         // data.daily[i]. for every piece of info you need
